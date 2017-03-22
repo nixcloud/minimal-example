@@ -42,34 +42,34 @@ problems are:
 
 1. to see how this works, do this:
 
-in `configuration.nix` add this:
+  in `configuration.nix` add this:
 
-      imports =
-        [ # Include the results of the hardware scan.
-          ./hardware-configuration.nix
-        ] ++ (import /tmp/minimal-example/all-nixcloud-services.nix { inherit config; inherit options; inherit lib; inherit pkgs;}).webservice-modules;
+        imports =
+          [ # Include the results of the hardware scan.
+            ./hardware-configuration.nix
+          ] ++ (import /tmp/minimal-example/all-nixcloud-services.nix { inherit config; inherit options; inherit lib; inherit pkgs;}).webservice-modules;
   
-       services.nixcloud.minimal.music1 = {
-         enable = true;
-         funkyExtra = "''yay1''";
+         services.nixcloud.minimal.music1 = {
+           enable = true;
+           funkyExtra = "''yay1''";
 
   
-         proxyOptions = {
-           port   = 40003;
-           path   = "/example";
-           domain = "example.com";
+           proxyOptions = {
+             port   = 40003;
+             path   = "/example";
+             domain = "example.com";
+           };
          };
-       };
-       services.nixcloud.minimal.music2 = {
-         enable = true;
-         funkyExtra = "''yay2''";
+         services.nixcloud.minimal.music2 = {
+           enable = true;
+           funkyExtra = "''yay2''";
   
-         proxyOptions = {
-           port   = 40004;
-           path   = "/example2";
-           domain = "example.com";
+           proxyOptions = {
+             port   = 40004;
+             path   = "/example2";
+             domain = "example.com";
+           };
          };
-       };
 
 2. then build the new system
 

@@ -26,15 +26,15 @@ benefits are:
 
 problems are:
 
- - nix-repl can only see the default value for ${stateDir} for each configured webservice
+ - nix-repl can only see the default value for `${stateDir}` for each configured webservice
 
-    nix-repl> config.services.nixcloud.minimal
-    { music1 = { ... }; music2 = { ... }; }
+      nix-repl> config.services.nixcloud.minimal
+      { music1 = { ... }; music2 = { ... }; }
 
-    :p config.services.nixcloud.minimal.music1.stateDir
-    ""
+      :p config.services.nixcloud.minimal.music1.stateDir
+      ""
 
-   this is caused by the fact that nixcloud-module-importer.nix changes the stateDir from the default to a 'new' default!
+   this is caused by the fact that nixcloud-module-importer.nix changes the `stateDir` from the default to a 'different' value!
    however, since only the later configuration knows about `music1` and `music2` it can't be assigned in `nginx.nix` which is sad since
    it breaks the options system as we know it.
 
@@ -73,7 +73,7 @@ in `configuration.nix` add this:
 
 2. then build the new system
 
-    nixos-rebuild switch
+       nixos-rebuild switch
 
 3. finally open your browser
 
@@ -89,5 +89,5 @@ in `configuration.nix` add this:
 
 4. visit the stateful directory
 
-      cd /var/lib/minimal-music1
-      ls -lathr
+        cd /var/lib/minimal-music1
+        ls -lathr

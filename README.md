@@ -12,15 +12,15 @@ benefits are:
  - as shown in minimal.nix with funkyExtra one can create options per webservice and they get appended into the nginx configuration from nixcloud-module-importer.nix
  - `minimal.nix` is easy to implement, `nginx.nix` is rather complicated in comparison, for instance:
 
-    config = config:
-      let
-        cfgCollection=config.services.nixcloud.${wsName};
-      in {
+      config = config:
+        let
+          cfgCollection=config.services.nixcloud.${wsName};
+        in {
 
-      systemd.services = flip mapAttrs' cfgCollection (name: cfg:  #'
-      let
-        apacheConfigFile = pkgs.writeText "${cfg.uniqueName}.conf" ''
-          ServerRoot ${httpd}
+        systemd.services = flip mapAttrs' cfgCollection (name: cfg:  #'
+        let
+          apacheConfigFile = pkgs.writeText "${cfg.uniqueName}.conf" ''
+            ServerRoot ${httpd}
 
     on has to `mapAttrs'` the cfgCollection into individual cfg(s) which hold each individual configuration of a service.
 

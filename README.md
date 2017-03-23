@@ -42,7 +42,7 @@ problems are:
 
 1. to see how this works, do this:
 
-  in `configuration.nix` add this:
+    in `configuration.nix` add this:
 
         imports =
           [ # Include the results of the hardware scan.
